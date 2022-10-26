@@ -1,5 +1,4 @@
-#ifndef map_hpp
-#define map_hpp
+#pragma once
 // clang-format off
 #include "opt_ref.hpp"
 #include "pair.hpp"
@@ -126,7 +125,7 @@ template <class T, class P> void Map<T, P>::delete_node(Node<T, P> *&node)
   }
   if (node->right == nullptr && node->left == nullptr) 
   {
-    delete node;
+    return delete node;
   }
   if (node->left != nullptr) 
   {
@@ -217,5 +216,3 @@ template <class T, class P> Node<T, P> &Map<T, P>::operator[](T key)
     return result.get();
   }
 }
-
-#endif /* Map_hpp */

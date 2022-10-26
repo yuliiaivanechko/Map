@@ -1,5 +1,4 @@
-#ifndef Deque_h
-#define Deque_h
+#pragma once
 // clang-format off
 #include <iostream>
 
@@ -36,15 +35,13 @@ public:
     return all_data[bottom];
   }
 
-  bool empty() 
+  bool empty() const
   {
     if (this->count == 0) 
     {
       return true;
-    } else 
-    {
-      return false;
     }
+    return false;
   }
 };
 
@@ -67,5 +64,3 @@ template <class T> T Queue<T>::pop()
   --count;
   return all_data[bottom++];
 }
-
-#endif /* Queue_hpp */

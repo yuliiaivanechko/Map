@@ -1,5 +1,4 @@
-#ifndef pair_hpp
-#define pair_hpp
+#pragma once
 // clang-format off
 #include <iostream>
 
@@ -10,16 +9,16 @@ template <class T, class P> struct pair
 
   pair() {}
 
-  pair(const T &t, const P &p);
+  pair(T &&t, P &&p) ;
 
   static pair make_pair(const T &t, const P &p);
 
   pair &operator=(const pair &left_pair);
-  bool operator<=(const pair &left_pair);
-  bool operator>=(const pair &left_pair);
-  bool operator<(const pair &left_pair);
-  bool operator>(const pair &left_pair);
-  bool operator==(const pair &left_pair);
+  bool operator<=(const pair &left_pair) const;
+  bool operator>=(const pair &left_pair) const;
+  bool operator<(const pair &left_pair) const;
+  bool operator>(const pair &left_pair) const;
+  bool operator==(const pair &left_pair) const;
 };
 
 template <class T, class P>
@@ -31,7 +30,7 @@ pair<T, P> pair<T, P>::make_pair(const T &t, const P &p)
   return m_pair;
 }
 
-template <class T, class P> pair<T, P>::pair(const T &t, const P &p) 
+template <class T, class P> pair<T, P>::pair(T &&t, P &&p) 
 {
   this->first = t;
   this->second = p;
@@ -45,62 +44,48 @@ pair<T, P> &pair<T, P>::operator=(const pair &left_pair)
   return *this;
 }
 
-template <class T, class P> bool pair<T, P>::operator<=(const pair &left_pair) 
+template <class T, class P> bool pair<T, P>::operator<=(const pair &left_pair) const
 {
   if (this->first <= left_pair.first) 
   {
     return true;
-  } else 
-  {
-    return false;
-  }
+  } 
+  return false;
+  
 }
 
-template <class T, class P> bool pair<T, P>::operator>=(const pair &left_pair) 
+template <class T, class P> bool pair<T, P>::operator>=(const pair &left_pair) const
 {
   if (this->first >= left_pair.first) 
   {
     return true;
-  } else 
-  {
-    return false;
-  }
+  } 
+  return false;
 }
 
-template <class T, class P> bool pair<T, P>::operator<(const pair &left_pair) 
+template <class T, class P> bool pair<T, P>::operator<(const pair &left_pair) const
 {
   if (this->first < left_pair.first) 
   {
     return true;
-  }
-  else 
-  {
-    return false;
-  }
+  } 
+  return false;
 }
 
-template <class T, class P> bool pair<T, P>::operator>(const pair &left_pair) 
+template <class T, class P> bool pair<T, P>::operator>(const pair &left_pair) const
 {
   if (this->first > left_pair.first) 
   {
     return true;
   } 
-  else 
-  {
-    return false;
-  }
+  return false;
 }
 
-template <class T, class P> bool pair<T, P>::operator==(const pair &left_pair) 
+template <class T, class P> bool pair<T, P>::operator==(const pair &left_pair) const
 {
   if (this->first == left_pair.first) 
   {
     return true;
   } 
-  else 
-  {
-    return false;
-  }
+  return false;
 }
-
-#endif
